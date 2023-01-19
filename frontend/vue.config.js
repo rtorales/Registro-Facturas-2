@@ -1,5 +1,7 @@
 module.exports = {
-  transpileDependencies: ['vuetify'],
+  "transpileDependencies": [
+    "vuetify"
+  ],
   publicPath: './',
   // quietDeps option workaround
   css: {
@@ -9,6 +11,6 @@ module.exports = {
           logger: require('sass').Logger.silent,
         },
       },
-    },
-  },
-};
+    }
+  }
+}
