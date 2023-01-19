@@ -16,6 +16,10 @@ export class ComprobanteRepository extends Repository<Comprobante> {
               .orderBy(`e.${field}`, sort)
 
               .leftJoinAndSelect('e.contribuyente', 'contribuyente')
+
+              .leftJoinAndSelect('e.anexo', 'anexo')
+
+              .leftJoinAndSelect('e.documento', 'documento')
             ;
 
             return countOnly ? [[], await dbQuery.getCount()] : dbQuery.getManyAndCount();
@@ -25,6 +29,10 @@ export class ComprobanteRepository extends Repository<Comprobante> {
               .take(size)
 
               .leftJoinAndSelect('e.contribuyente', 'contribuyente')
+
+              .leftJoinAndSelect('e.anexo', 'anexo')
+
+              .leftJoinAndSelect('e.documento', 'documento')
 
             return countOnly ? [[], await dbQuery.getCount()] : dbQuery.getManyAndCount();
         }

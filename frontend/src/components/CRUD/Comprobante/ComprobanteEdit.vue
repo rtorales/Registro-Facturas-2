@@ -284,6 +284,24 @@
                ></v-checkbox>
            </v-col>
 
+            <ImageUploader
+                label="Anexo"
+                id="891D5-9069-878F-053F"
+                url="comprobante/anexo"
+                :images="anexo"
+                @change="anexoAdd"
+                @del="anexoDel"
+            />
+
+            <FileUploader
+                label="Documento"
+                id="E32ED-9A78-A127-E937"
+                url="comprobante/documento"
+                :files="documento"
+                @change="documentoAdd"
+                @del="documentoDel"
+            />
+
               <v-col cols="12 mt-5">
                 <v-btn
                     type="submit"
@@ -356,6 +374,10 @@ export default {
 
         imputaIRPRSP: false,
 
+        anexo: [],
+
+        documento: [],
+
     }
   },
   computed: {
@@ -424,6 +446,10 @@ export default {
 
         data.imputaIRPRSP = this.imputaIRPRSP
 
+        data.anexo = this.anexo
+
+        data.documento = this.documento
+
                 const contribuyenteEl = this.optionsContribuyente.filter(i => i.label === this.contribuyente)
                 data.contribuyente = contribuyenteEl.length ? contribuyenteEl[0].id : null
 
@@ -434,6 +460,20 @@ export default {
             this.showSnackbar(e)
         }
     },
+
+        anexoAdd(val) {
+            this.anexo.push(val)
+        },
+        anexoDel(id) {
+            this.anexo = this.anexo.filter(img => img.id !== id)
+        },
+
+        documentoAdd(val) {
+            this.documento.push(val)
+        },
+        documentoDel(id) {
+            this.documento = this.documento.filter(file => file.id !== id)
+        },
 
         formatData() {
 
@@ -460,6 +500,10 @@ export default {
             this.total = this.data.total
 
             this.condicion = this.data.condicion
+
+            this.anexo = this.data.anexo
+
+            this.documento = this.data.documento
 
         }
      },

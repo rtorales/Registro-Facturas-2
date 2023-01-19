@@ -73,7 +73,7 @@
 
       <ImageUploader
         label="Avatar"
-        id="8C850-D9C3-9E52-9784"
+        id="00EF9-5E28-04CE-C325"
         url="users/avatar"
         :images="avatar"
         @change="avatarAdd"

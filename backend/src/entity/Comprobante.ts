@@ -6,11 +6,16 @@ import {
     CreateDateColumn,
     UpdateDateColumn,
 
+    JoinTable,
+    ManyToMany,
+
     ManyToOne,
     JoinColumn,
 
 } from 'typeorm';
 import * as TypeBox from '@sinclair/typebox';
+
+import { File, fileSchema } from './File';
 
 import { Contribuyentes, contribuyentesSchema } from './Contribuyentes';
 
@@ -161,5 +166,13 @@ export class Comprobante implements Omit<TypeBox.Static<typeof comprobanteSchema
 
         @Column({ default: false })
         imputaIRPRSP!: boolean;
+
+        @ManyToMany(() => File, { eager: true, cascade: true })
+    @JoinTable({ name: 'comprobante_anexo_join' })
+        anexo!: File[];
+
+        @ManyToMany(() => File, { eager: true, cascade: true })
+    @JoinTable({ name: 'comprobante_documento_join' })
+        documento!: File[];
 
 }
