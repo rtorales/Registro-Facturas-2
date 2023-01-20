@@ -1,13 +1,13 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
+import Vue from 'vue'
+import Vuex from 'vuex'
 
-import layout from './layout';
-import snackbar from './snackbar';
-import auth from './auth';
-import register from '@/store/register';
-import changePassword from './changePassword';
-import forgot from './forgot';
-import reset from './reset';
+import layout from "./layout"
+import snackbar from "./snackbar"
+import auth from "./auth"
+import register from "@/store/register"
+import changePassword from './changePassword'
+import forgot from './forgot'
+import reset from './reset'
 import users from './lists/usersList';
 import usersForm from './forms/usersForm';
 
@@ -37,5 +37,7 @@ export default new Vuex.Store({
 
     comprobante,
     comprobanteForm,
-  },
+
+  }
 });
+

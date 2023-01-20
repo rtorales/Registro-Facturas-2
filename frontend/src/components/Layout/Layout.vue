@@ -8,11 +8,19 @@
         <router-view />
         <Footer class="footer" />
         <Helper />
-        <v-snackbar :value="snackbar" @input="changeSnackbar">
+        <v-snackbar
+            :value="snackbar"
+            @input="changeSnackbar"
+        >
           {{ snackbarText }}
 
           <template v-slot:action="{ attrs }">
-            <v-btn color="white" text v-bind="attrs" @click="hideSnackbar()">
+            <v-btn
+                color="white"
+                text
+                v-bind="attrs"
+                @click="hideSnackbar()"
+            >
               Close
             </v-btn>
           </template>
@@ -23,65 +31,65 @@
 </template>
 
 <script>
-  import Header from '@/components/Header/Header';
-  import Sidebar from '@/components/Sidebar/Sidebar';
-  import Footer from '@/components/Footer/Footer';
-  import Breadcrumbs from '@/components/Breadcrumbs/Breadcrumbs';
-  import Helper from '@/components/Helper/Helper';
-  import { mapMutations, mapState } from 'vuex';
+import Header from '@/components/Header/Header';
+import Sidebar from '@/components/Sidebar/Sidebar';
+import Footer from '@/components/Footer/Footer';
+import Breadcrumbs from '@/components/Breadcrumbs/Breadcrumbs';
+import Helper from '@/components/Helper/Helper';
+import { mapMutations, mapState } from 'vuex'
 
-  export default {
-    name: 'Layout',
-    components: { Helper, Footer, Header, Sidebar, Breadcrumbs },
-    computed: {
-      ...mapState({
-        snackbar: (state) => state.snackbar.show,
-        snackbarText: (state) => state.snackbar.text,
-      }),
-    },
-    methods: {
-      ...mapMutations({
-        hideSnackbar: 'snackbar/hideSnackbar',
-      }),
-      changeSnackbar(val) {
-        if (!val) this.hideSnackbar();
-      },
-    },
-  };
+export default {
+  name: 'Layout',
+  components: { Helper, Footer, Header, Sidebar, Breadcrumbs },
+  computed: {
+    ...mapState({
+      snackbar: state => state.snackbar.show,
+      snackbarText: state => state.snackbar.text,
+    })
+  },
+  methods: {
+    ...mapMutations({
+      hideSnackbar: 'snackbar/hideSnackbar',
+    }),
+    changeSnackbar(val) {
+      if (!val) this.hideSnackbar()
+    }
+  },
+};
 </script>
 
 <style lang="scss">
-  @import '../../styles/_variables.scss';
+    @import "../../styles/_variables.scss";
 
-  body {
-    &::-webkit-scrollbar {
-      width: 6px;
+    body {
+        &::-webkit-scrollbar {
+            width: 6px;
+        }
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--v-greyTint-base);
+            border-radius: 36px;
+            border: none;
+        }
+        .v-main__wrap {
+            padding: 70px $content-padding $content-padding;
+            @media #{map-get($display-breakpoints, 'sm-and-down')} {
+                padding: 70px $content-padding / 1.5 $content-padding / 1.5;
+            }
+        }
     }
-    &::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    &::-webkit-scrollbar-thumb {
-      background-color: var(--v-greyTint-base);
-      border-radius: 36px;
-      border: none;
-    }
-    .v-main__wrap {
-      padding: 70px $content-padding $content-padding;
-      @media #{map-get($display-breakpoints, 'sm-and-down')} {
-        padding: 70px $content-padding / 1.5 $content-padding / 1.5;
-      }
-    }
-  }
 </style>
 
 <style lang="scss" scoped>
-  .footer {
-    align-items: flex-end;
-  }
+    .footer {
+        align-items: flex-end;
+    }
 
-  .wrapper {
-    flex-direction: column;
-    display: flex;
-    min-height: 100%;
-  }
+    .wrapper {
+        flex-direction: column;
+        display: flex;
+        min-height: 100%;
+    }
 </style>
