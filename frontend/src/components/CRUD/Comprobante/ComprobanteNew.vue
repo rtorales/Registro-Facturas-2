@@ -286,7 +286,7 @@
 
     <ImageUploader
             label="Anexo"
-            id="653AF-B480-1EE0-04A9"
+            id="34182-5471-6F99-02F4"
             url="comprobante/anexo"
             :images="anexo"
             @change="anexoAdd"
@@ -295,7 +295,7 @@
 
     <FileUploader
         label="Documento"
-        id="46437-CAC6-9704-0AB2"
+        id="A1473-F1EE-5D8F-73C3"
         url="comprobante/documento"
         :files="documento"
         @change="documentoAdd"
