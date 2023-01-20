@@ -54,9 +54,7 @@
       "parser": "babel-eslint"
     },
     "rules": {
-      "vue/no-unused-components": [
-        "off"
-      ]
+      "vue/no-unused-components": ["off"]
     }
   },
   "browserslist": [

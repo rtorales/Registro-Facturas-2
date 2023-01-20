@@ -1,3 +1,4 @@
+
 <template>
   <v-navigation-drawer
     app
@@ -8,114 +9,177 @@
     :permanent="$vuetify.breakpoint.lgAndUp"
     :temporary="$vuetify.breakpoint.mdAndDown"
     :mini-variant-width="sidebarMinWidth"
-    :class="{ 'drawer-mini': !DRAWER_STATE }"
+    :class="{'drawer-mini': !DRAWER_STATE}"
   >
     <v-list>
-      <v-list-item link color="primary" :to="'/app/dashboard'">
-        <v-list-item-action class="mr-6">
-          <v-icon :size="24" color="mdi-home">mdi-home</v-icon>
-        </v-list-item-action>
-        <v-list-item-content>
-          <v-list-item-title link> Dashboard </v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-
-      <v-list-item link color="primary" :to="'/admin/users'">
-        <v-list-item-action class="mr-6">
-          <v-icon :size="24">mdi-animation</v-icon>
-        </v-list-item-action>
-        <v-list-item-content>
-          <v-list-item-title link> Users </v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-
-      <v-list-item link color="primary" :to="'/admin/contribuyentes'">
-        <v-list-item-action class="mr-6">
-          <v-icon :size="24">mdi-animation</v-icon>
-        </v-list-item-action>
-        <v-list-item-content>
-          <v-list-item-title link> Contribuyentes </v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-
-      <v-list-item link color="primary" :to="'/admin/comprobante'">
-        <v-list-item-action class="mr-6">
-          <v-icon :size="24">mdi-animation</v-icon>
-        </v-list-item-action>
-        <v-list-item-content>
-          <v-list-item-title link> Comprobante </v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-
-      <v-list-item link color="primary" :to="'/app/profile'">
-        <v-list-item-action class="mr-6">
-          <v-icon :size="24">mdi-account</v-icon>
-        </v-list-item-action>
-        <v-list-item-content>
-          <v-list-item-title link> Profile </v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-      <v-list-item link color="primary" :to="'/app/password'">
-        <v-list-item-action class="mr-6">
-          <v-icon :size="24">mdi-lock</v-icon>
-        </v-list-item-action>
-        <v-list-item-content>
-          <v-list-item-title link> Change password </v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-      <a
-        :href="externalLink"
-        target="_blank"
-        class="v-list-item v-list-item--link theme--light"
+      <v-list-item
+          link
+          color="primary"
+          :to="'/app/dashboard'"
       >
         <v-list-item-action class="mr-6">
-          <v-icon :size="24">mdi-file</v-icon>
+          <v-icon
+              :size="24"
+              color="mdi-home"
+          >mdi-home</v-icon>
         </v-list-item-action>
         <v-list-item-content>
-          <v-list-item-title link> API docs </v-list-item-title>
+          <v-list-item-title
+              link
+          >
+            Dashboard
+          </v-list-item-title>
         </v-list-item-content>
-      </a>
+      </v-list-item>
+
+        <v-list-item
+            link
+            color="primary"
+            :to="'/admin/users'"
+        >
+          <v-list-item-action class="mr-6">
+            <v-icon
+              :size="24"
+            >mdi-animation</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title
+                link
+            >
+              Users
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item
+            link
+            color="primary"
+            :to="'/admin/contribuyentes'"
+        >
+          <v-list-item-action class="mr-6">
+            <v-icon
+              :size="24"
+            >mdi-animation</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title
+                link
+            >
+              Contribuyentes
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item
+            link
+            color="primary"
+            :to="'/admin/comprobante'"
+        >
+          <v-list-item-action class="mr-6">
+            <v-icon
+              :size="24"
+            >mdi-animation</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title
+                link
+            >
+              Comprobante
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+      <v-list-item
+          link
+          color="primary"
+          :to="'/app/profile'"
+      >
+        <v-list-item-action class="mr-6">
+          <v-icon
+              :size="24"
+          >mdi-account</v-icon>
+        </v-list-item-action>
+        <v-list-item-content>
+          <v-list-item-title
+              link
+          >
+            Profile
+          </v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+      <v-list-item
+          link
+          color="primary"
+          :to="'/app/password'"
+      >
+        <v-list-item-action class="mr-6">
+          <v-icon
+              :size="24"
+          >mdi-lock</v-icon>
+        </v-list-item-action>
+        <v-list-item-content>
+          <v-list-item-title
+              link
+          >
+            Change password
+          </v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+    <a :href="externalLink" target="_blank" class="v-list-item v-list-item--link theme--light">
+      <v-list-item-action class="mr-6">
+        <v-icon
+                :size="24"
+        >mdi-file</v-icon>
+      </v-list-item-action>
+      <v-list-item-content>
+        <v-list-item-title
+                link
+        >
+          API docs
+        </v-list-item-title>
+      </v-list-item-content>
+    </a>
     </v-list>
   </v-navigation-drawer>
 </template>
 
 <script>
-  import { mapActions, mapState } from 'vuex';
+  import { mapActions, mapState } from 'vuex'
 
   export default {
     name: 'Sidebar',
     props: {
-      source: String,
+        source: String,
     },
     data() {
       return {
         sidebarWidth: 240,
         sidebarMinWidth: 96,
-      };
+      }
     },
     computed: {
-      ...mapState('layout', {
-        drawer: (state) => state.drawer,
-      }),
+      ...mapState( 'layout', {
+        drawer: state => state.drawer
+      } ),
       DRAWER_STATE: {
         get() {
-          return this.drawer;
+          return this.drawer
         },
         set(newValue) {
           if (newValue === this.drawer) return;
           this.TOGGLE_DRAWER();
-        },
+        }
       },
       externalLink: () => {
-        return process.env.NODE_ENV === 'production'
-          ? window.location.origin + '/api-docs'
-          : 'http://localhost:8080/api-docs';
+        return process.env.NODE_ENV === 'production' ? window.location.origin + '/api-docs' : 'http://localhost:8080/api-docs';
       },
     },
     methods: {
-      ...mapActions('layout', ['TOGGLE_DRAWER']),
-    },
-  };
+      ...mapActions(
+        'layout', [ 'TOGGLE_DRAWER' ]
+      ),
+    }
+  }
 </script>
 
 <style lang="scss">
