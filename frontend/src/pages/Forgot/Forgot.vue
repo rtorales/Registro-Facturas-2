@@ -9,33 +9,45 @@
           </div>
         </v-col>
 
-        <v-col cols="12" lg="5" class="login-part d-flex align-center justify-center">
+        <v-col
+          cols="12"
+          lg="5"
+          class="login-part d-flex align-center justify-center"
+        >
           <v-row no-gutters class="align-start">
-          <v-col cols="12" class="login-part d-flex align-center justify-center flex-column">
-          <div class="login-wrapper pt-16 pt-sm-0">
-
-            <v-form>
-              <v-container>
-                <v-row class="flex-column">
-                  <v-col>
-                    <p class="login-slogan display-2 text-center font-weight-medium my-10">Good Morning, User</p>
-                  </v-col>
-                    <v-form
-                      ref="log"
-                      v-model="valid"
-                      lazy-validation
-                    >
+            <v-col
+              cols="12"
+              class="login-part d-flex align-center justify-center flex-column"
+            >
+              <div class="login-wrapper pt-16 pt-sm-0">
+                <v-form>
+                  <v-container>
+                    <v-row class="flex-column">
                       <v-col>
-                        <v-text-field
-                          light
-                          id="email"
-                          ref="email"
-                          v-model="email"
-                          :rules="emailRules"
-                          single-line
-                          label="Email Address"
-                          required
-                        ></v-text-field>
+                        <p
+                          class="
+                            login-slogan
+                            display-2
+                            text-center
+                            font-weight-medium
+                            my-10
+                          "
+                        >
+                          Good Morning, User
+                        </p>
+                      </v-col>
+                      <v-form ref="log" v-model="valid" lazy-validation>
+                        <v-col>
+                          <v-text-field
+                            light
+                            id="email"
+                            ref="email"
+                            v-model="email"
+                            :rules="emailRules"
+                            single-line
+                            label="Email Address"
+                            required
+                          ></v-text-field>
                         </v-col>
                         <v-col class="d-flex justify-space-between">
                           <v-btn
@@ -54,18 +66,21 @@
                             class="text-capitalize primary--text"
                             @click="$router.push('/login')"
                           >
-                              Enter the account
-                            </v-btn>
-                          </v-col>
-                        </v-form>
-                      </v-row>
-                    </v-container>
-                  </v-form>
+                            Enter the account
+                          </v-btn>
+                        </v-col>
+                      </v-form>
+                    </v-row>
+                  </v-container>
+                </v-form>
               </div>
             </v-col>
             <v-col cols="12" class="d-flex justify-center">
               <v-footer>
-                <div class="primary--text">{{ (new Date()).getFullYear() }} &copy; Registro Facturas - Made by <a href="https://flatlogic.com/">Flatlogic</a></div>
+                <div class="primary--text">
+                  {{ new Date().getFullYear() }} &copy; Registro Facturas - Made
+                  by <a href="https://flatlogic.com/">Flatlogic</a>
+                </div>
               </v-footer>
             </v-col>
           </v-row>
@@ -76,35 +91,35 @@
 </template>
 
 <script>
-import {mapState, mapActions} from 'vuex'
+  import { mapState, mapActions } from 'vuex';
 
-export default {
-  data() {
-    return {
-      valid: true,
-      email: '',
-      emailRules: [
-        v => !!v || 'E-mail is required',
-        v => /.+@.+/.test(v) || 'E-mail must be valid',
-        v => v.toLowerCase() === this.email
-      ],
-    }
-  },
-  computed: {
-    ...mapState('forgot', ['isFetching'])
-  },
-  methods: {
-    ...mapActions('forgot', ['forgot']),
-    async submitHandler() {
-      await this.forgot(this.email)
-      this.email = ''
-    }
-  }
-}
+  export default {
+    data() {
+      return {
+        valid: true,
+        email: '',
+        emailRules: [
+          (v) => !!v || 'E-mail is required',
+          (v) => /.+@.+/.test(v) || 'E-mail must be valid',
+          (v) => v.toLowerCase() === this.email,
+        ],
+      };
+    },
+    computed: {
+      ...mapState('forgot', ['isFetching']),
+    },
+    methods: {
+      ...mapActions('forgot', ['forgot']),
+      async submitHandler() {
+        await this.forgot(this.email);
+        this.email = '';
+      },
+    },
+  };
 </script>
 
 <style lang="scss" scoped>
-  @import "../../styles/_variables.scss";
+  @import '../../styles/_variables.scss';
 
   .main-part {
     width: 100%;

@@ -9,9 +9,7 @@
 </script>
 
 <style lang="scss">
-    @import 'styles/base';
+  @import 'styles/base';
 
-    @import '~vuetify/src/styles/main.sass';
+  @import '~vuetify/src/styles/main.sass';
 </style>
-
-
