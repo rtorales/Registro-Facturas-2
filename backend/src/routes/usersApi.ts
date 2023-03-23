@@ -156,10 +156,12 @@ export default async (app: FastifyInstance) => {
         // @ts-ignore
     }, async (req) => {
         const repo = getCustomRepository(UsersRepository);
-        const payload = omit(req.body.data, []);
+        const payload = omit(req.body.data, ['Contribuyente']);
 
         const { id } = await repo.save({
             ...payload,
+
+                    Contribuyente: req.body.data.Contribuyente ? req.body.data.Contribuyente.map(id => ({ id })) : undefined,
 
         });
 
@@ -167,6 +169,8 @@ export default async (app: FastifyInstance) => {
             where: {
                 id,
             },
+
+            relations: ['Contribuyente']
 
         });
     });
@@ -206,6 +210,8 @@ export default async (app: FastifyInstance) => {
                 id: req.params.id,
             },
 
+            relations: ['Contribuyente']
+
         });
 
         return entity ? entity : reply.notFound('Users not found');
@@ -231,11 +237,13 @@ export default async (app: FastifyInstance) => {
             }],
         }
     }, async (req) => {
-        const payload = omit(req.body.data, []);
+        const payload = omit(req.body.data, ['Contribuyente']);
         const repo = getCustomRepository(UsersRepository);
 
         await repo.save({
             ...payload,
+
+                Contribuyente: req.body.data.Contribuyente ? req.body.data.Contribuyente.map(id => ({ id })) : undefined,
 
             id: req.params.id,
         });
@@ -244,6 +252,8 @@ export default async (app: FastifyInstance) => {
             where: {
                 id: req.params.id,
             },
+
+            relations: ['Contribuyente']
 
         });
     });

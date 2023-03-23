@@ -96,6 +96,8 @@ export class UsersRepository extends Repository<Users> {
               .orderBy(`e.${field}`, sort)
 
               .leftJoinAndSelect('e.avatar', 'avatar')
+
+              .leftJoinAndSelect('e.Contribuyente', 'Contribuyente')
             ;
 
             return countOnly ? [[], await dbQuery.getCount()] : dbQuery.getManyAndCount();
@@ -105,6 +107,8 @@ export class UsersRepository extends Repository<Users> {
               .take(size)
 
               .leftJoinAndSelect('e.avatar', 'avatar')
+
+              .leftJoinAndSelect('e.Contribuyente', 'Contribuyente')
 
             return countOnly ? [[], await dbQuery.getCount()] : dbQuery.getManyAndCount();
         }

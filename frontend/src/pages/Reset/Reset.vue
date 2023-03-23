@@ -9,44 +9,57 @@
           </div>
         </v-col>
 
-        <v-col cols="12" lg="5" class="login-part d-flex align-center justify-center">
+        <v-col
+          cols="12"
+          lg="5"
+          class="login-part d-flex align-center justify-center"
+        >
           <v-row no-gutters class="align-start">
-            <v-col cols="12" class="login-part d-flex align-center justify-center flex-column">
+            <v-col
+              cols="12"
+              class="login-part d-flex align-center justify-center flex-column"
+            >
               <div class="login-wrapper pt-16 pt-sm-0">
                 <v-form>
                   <v-container>
                     <v-row class="flex-column">
                       <v-col>
-                        <p class="login-slogan display-2 text-center font-weight-medium my-10">Forgot password?</p>
+                        <p
+                          class="
+                            login-slogan
+                            display-2
+                            text-center
+                            font-weight-medium
+                            my-10
+                          "
+                        >
+                          Forgot password?
+                        </p>
                       </v-col>
-                      <v-form
-                        ref="log"
-                        v-model="valid"
-                        lazy-validation
-                      >
+                      <v-form ref="log" v-model="valid" lazy-validation>
                         <v-col>
-                            <v-text-field
-                                light
-                                id="password"
-                                ref="password"
-                                v-model="password"
-                                :rules="passRules"
-                                single-line
-                                type="password"
-                                label="Password"
-                                required
-                            ></v-text-field>
-                            <v-text-field
-                                light
-                                id="password"
-                                ref="password"
-                                v-model="confirmPassword"
-                                :rules="passRules"
-                                single-line
-                                type="password"
-                                label="Password"
-                                required
-                            ></v-text-field>
+                          <v-text-field
+                            light
+                            id="password"
+                            ref="password"
+                            v-model="password"
+                            :rules="passRules"
+                            single-line
+                            type="password"
+                            label="Password"
+                            required
+                          ></v-text-field>
+                          <v-text-field
+                            light
+                            id="password"
+                            ref="password"
+                            v-model="confirmPassword"
+                            :rules="passRules"
+                            single-line
+                            type="password"
+                            label="Password"
+                            required
+                          ></v-text-field>
                         </v-col>
                         <v-col class="d-flex justify-space-between">
                           <v-btn
@@ -68,54 +81,56 @@
                             Enter the account
                           </v-btn>
                         </v-col>
-                        </v-form>
+                      </v-form>
                     </v-row>
-                </v-container>
-            </v-form>
-        </div>
-    </v-col>
-    <v-col cols="12" class="d-flex justify-center">
-        <v-footer>
-            <div class="primary--text">{{ (new Date()).getFullYear() }} &copy; Registro Facturas - Made by <a href="https://flatlogic.com/">Flatlogic</a></div>
-        </v-footer>
-    </v-col>
-</v-row>
+                  </v-container>
+                </v-form>
+              </div>
+            </v-col>
+            <v-col cols="12" class="d-flex justify-center">
+              <v-footer>
+                <div class="primary--text">
+                  {{ new Date().getFullYear() }} &copy; Registro Facturas - Made
+                  by <a href="https://flatlogic.com/">Flatlogic</a>
+                </div>
+              </v-footer>
+            </v-col>
+          </v-row>
         </v-col>
-        </v-row>
-        </v-container>
-        </v-app>
-        </template>
+      </v-row>
+    </v-container>
+  </v-app>
+</template>
 
 <script>
-import {mapState, mapActions} from 'vuex'
+  import { mapState, mapActions } from 'vuex';
 
-export default {
+  export default {
     data() {
-        return {
-            valid: true,
-            password: '',
-            confirmPassword: '',
-            passRules: [
-                v => !!v || 'Password is required',
-                v => v.length >= 6 || 'Min 6 characters'
-            ],
-        }
+      return {
+        valid: true,
+        password: '',
+        confirmPassword: '',
+        passRules: [
+          (v) => !!v || 'Password is required',
+          (v) => v.length >= 6 || 'Min 6 characters',
+        ],
+      };
     },
     computed: {
-        ...mapState('reset', ['isFetching']),
+      ...mapState('reset', ['isFetching']),
     },
 
     methods: {
-    ...mapActions('reset', ['reset']),
-    async submitHandler() {
-            if (this.password === this.confirmPassword) {
-                const token = this.$route.query.token
-                await this.reset({password: this.password, token})
-                this.password = ''
-                this.confirmPassword = ''
-            }
+      ...mapActions('reset', ['reset']),
+      async submitHandler() {
+        if (this.password === this.confirmPassword) {
+          const token = this.$route.query.token;
+          await this.reset({ password: this.password, token });
+          this.password = '';
+          this.confirmPassword = '';
         }
-    }
-}
+      },
+    },
+  };
 </script>
-

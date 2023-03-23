@@ -14,6 +14,8 @@ import * as TypeBox from '@sinclair/typebox';
 
 import { File, fileSchema } from './File';
 
+import { Contribuyentes, contribuyentesSchema } from './Contribuyentes';
+
 import { Nullable } from '../utils';
 
 export enum Role {
@@ -44,6 +46,8 @@ export const usersSchema = TypeBox.Type.Object({
 
         avatar: TypeBox.Type.Array(fileSchema, { default: [] }),
 
+        Contribuyente: TypeBox.Type.Array(contribuyentesSchema, { default: [] }),
+
 }, { additionalProperties: false });
 
 /**
@@ -64,6 +68,8 @@ export const usersInputSchema = TypeBox.Type.Object({
         disabled: TypeBox.Type.Boolean({ default: false }),
 
         avatar: TypeBox.Type.Array(fileSchema, { default: [] }),
+
+        Contribuyente: TypeBox.Type.Optional(TypeBox.Type.Array(TypeBox.Type.String())),
 
         password: TypeBox.Type.String(),
 
@@ -127,5 +133,9 @@ export class Users implements Omit<TypeBox.Static<typeof usersSchema>, 'emailVer
 
         @Column({ default: '' })
         provider!: string;
+
+        @ManyToMany(() => Contribuyentes, { cascade: true })
+    @JoinTable({ name: 'users_Contribuyente_join' })
+        Contribuyente!: Contribuyentes[];
 
 }
